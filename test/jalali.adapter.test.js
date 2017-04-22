@@ -3,6 +3,12 @@ const expect = require('chai').expect;
 const adapter = require('../src/jalali.adapter.js');
 
 describe('Jalali Adapter', () => {
+  describe('name', () => {
+    it('should return a string', () => {
+      expect(adapter.name).to.be.a('string');
+    });
+  });
+
   describe('l10n', () => {
     it('should return {year: 1396, month: 1, day: 31} when (2017, 4, 20)', () => {
       const date = { year: 2017, month: 4, day: 20 };

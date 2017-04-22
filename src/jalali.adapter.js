@@ -15,6 +15,8 @@ const months = [
   { name: 'Esfand', short: 'Esf' },
 ];
 
+exports.name = 'dariush-alipour.onecalendar.adapter.jalali';
+
 exports.l10n = function l10n(date) {
   const newDate = jalaaliJs.toJalaali(date.year, date.month, date.day);
   const ldate = {
