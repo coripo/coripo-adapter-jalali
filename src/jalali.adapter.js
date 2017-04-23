@@ -2,6 +2,7 @@ const jalaaliJs = require('jalaali-js');
 
 const Adapter = function Adapter() {
   const id = 'dariush-alipour.onecalendar.adapter.jalali';
+  const name = 'Jalali';
 
   const months = [
     { name: 'Farvardin', short: 'Farv' },
@@ -51,7 +52,7 @@ const Adapter = function Adapter() {
 
   const isLeap = year => jalaaliJs.isLeapJalaaliYear(year);
 
-  return { id, l10n, i18n, isValid, isLeap, getMonthName, getMonthLength };
+  return { id, name, l10n, i18n, isValid, isLeap, getMonthName, getMonthLength };
 };
 
 exports.Adapter = Adapter;
