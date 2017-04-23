@@ -5,9 +5,9 @@ const JalaliAdapter = require('../src/jalali.adapter.js').Adapter;
 const jalaliAdapter = new JalaliAdapter();
 
 describe('Jalali Adapter', () => {
-  describe('name', () => {
+  describe('id', () => {
     it('should return a string', () => {
-      expect(jalaliAdapter.name).to.be.a('string');
+      expect(jalaliAdapter.id).to.be.a('string');
     });
   });
 
