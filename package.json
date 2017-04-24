@@ -1,6 +1,6 @@
 {
   "name": "onecalendar-adapter-jalali",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Jalali calendar adapter for OneCalendar",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,9 @@
   },
   "keywords": [
     "calendar",
-    "onecalendar"
+    "onecalendar",
+    "onecalendar-adapter",
+    "jalali"
   ],
   "author": "Dariush Alipour <drsh.alipour@gmail.com>",
   "license": "MIT",
