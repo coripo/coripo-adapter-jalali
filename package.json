@@ -1,6 +1,6 @@
 {
   "name": "onecalendar-adapter-jalali",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Jalali calendar adapter for OneCalendar",
   "main": "index.js",
   "scripts": {
