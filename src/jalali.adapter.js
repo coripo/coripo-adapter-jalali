@@ -3,6 +3,7 @@ const jalaaliJs = require('jalaali-js');
 const Adapter = function Adapter() {
   const id = 'dariush-alipour.coripo.adapter.jalali';
   const name = 'Jalali';
+  const description = 'The Jalali calendar is a solar calendar that was used in Persia, variants of which today are still in use in Iran as well as Afghanistan.';
 
   const months = [
     { name: 'Farvardin', short: 'Farv' },
@@ -52,7 +53,7 @@ const Adapter = function Adapter() {
 
   const isLeap = year => jalaaliJs.isLeapJalaaliYear(year);
 
-  return { id, name, l10n, i18n, isValid, isLeap, getMonthName, getMonthLength };
+  return { id, name, description, l10n, i18n, isValid, isLeap, getMonthName, getMonthLength };
 };
 
 exports.Adapter = Adapter;
