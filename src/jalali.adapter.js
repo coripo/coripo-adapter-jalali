@@ -1,7 +1,7 @@
 const jalaaliJs = require('jalaali-js');
 
 const Adapter = function Adapter() {
-  const id = 'dariush-alipour.onecalendar.adapter.jalali';
+  const id = 'dariush-alipour.coripo.adapter.jalali';
   const name = 'Jalali';
 
   const months = [

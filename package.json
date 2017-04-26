@@ -1,27 +1,27 @@
 {
-  "name": "onecalendar-adapter-jalali",
-  "version": "1.0.7",
-  "description": "Jalali calendar adapter for OneCalendar",
+  "name": "coripo-adapter-jalali",
+  "version": "1.0.8",
+  "description": "Jalali calendar adapter for Coripo",
   "main": "index.js",
   "scripts": {
     "test": "mocha -R spec"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dariush-alipour/onecalendar-adapter-jalali.git"
+    "url": "git+https://github.com/coripo/coripo-adapter-jalali.git"
   },
   "keywords": [
     "calendar",
-    "onecalendar",
-    "onecalendar-adapter",
+    "coripo",
+    "coripo-adapter",
     "jalali"
   ],
   "author": "Dariush Alipour <drsh.alipour@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dariush-alipour/onecalendar-adapter-jalali/issues"
+    "url": "https://github.com/coripo/coripo-adapter-jalali/issues"
   },
-  "homepage": "https://github.com/dariush-alipour/onecalendar-adapter-jalali#readme",
+  "homepage": "https://github.com/coripo/coripo-adapter-jalali#readme",
   "devDependencies": {
     "chai": "^3.5.0",
     "eslint": "^3.19.0",
