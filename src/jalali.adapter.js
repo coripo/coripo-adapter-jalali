@@ -1,7 +1,7 @@
 const jalaaliJs = require('jalaali-js');
 
 const Adapter = function Adapter() {
-  const id = 'dariush-alipour.coripo.adapter.jalali';
+  const id = 'coripo.coripo.adapter.jalali';
   const name = 'Jalali';
   const description = 'The Jalali calendar is a solar calendar that was used in Persia, variants of which today are still in use in Iran as well as Afghanistan.';
 
