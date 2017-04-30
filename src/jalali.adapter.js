@@ -1,3 +1,4 @@
+/* eslint-disable prefer-template */
 const jalaaliJs = require('jalaali-js');
 
 const Adapter = function Adapter() {
@@ -85,7 +86,7 @@ const Adapter = function Adapter() {
       should be checked
     */
     const i18nDate = i18n({ year: date.year, month: date.month, day: date.day });
-    const jsDate = new Date(`${i18nDate.year}-${i18nDate.month}-${i18nDate.day}`);
+    const jsDate = new Date(i18nDate.year + '-' + i18nDate.month + '-' + i18nDate.day);
     jsDate.setDate(jsDate.getDate() + offset);
     return l10n({
       year: jsDate.getFullYear(),
