@@ -1,4 +1,5 @@
 /* eslint-disable prefer-template */
+/* eslint-disable object-shorthand */
 const jalaaliJs = require('jalaali-js');
 
 const Adapter = function Adapter() {
@@ -96,18 +97,18 @@ const Adapter = function Adapter() {
   };
 
   return {
-    id,
-    name,
-    description,
-    l10n,
-    i18n,
-    isValid,
-    isLeap,
-    getMonthName,
-    getMonthLength,
-    offsetYear,
-    offsetMonth,
-    offsetDay,
+    id: id,
+    name: name,
+    description: description,
+    l10n: l10n,
+    i18n: i18n,
+    isValid: isValid,
+    isLeap: isLeap,
+    getMonthName: getMonthName,
+    getMonthLength: getMonthLength,
+    offsetYear: offsetYear,
+    offsetMonth: offsetMonth,
+    offsetDay: offsetDay,
   };
 };
 
