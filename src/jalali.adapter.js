@@ -1,5 +1,3 @@
-/* eslint-disable prefer-template */
-/* eslint-disable object-shorthand */
 const jalaaliJs = require('jalaali-js');
 
 const Adapter = function Adapter() {
@@ -22,7 +20,7 @@ const Adapter = function Adapter() {
     { name: 'Esfand', short: 'Esf' },
   ];
 
-  const l10n = function l10n(date) {
+  const l10n = (date) => {
     const newDate = jalaaliJs.toJalaali(date.year, date.month, date.day);
     const ldate = {
       year: newDate.jy,
@@ -31,7 +29,7 @@ const Adapter = function Adapter() {
     };
     return ldate;
   };
-  const i18n = function i18n(ldate) {
+  const i18n = (ldate) => {
     const newDate = jalaaliJs.toGregorian(ldate.year, ldate.month, ldate.day);
     const date = {
       year: newDate.gy,
@@ -41,7 +39,7 @@ const Adapter = function Adapter() {
     return date;
   };
 
-  const getMonthName = function getMonthName(month, short) {
+  const getMonthName = (month, short) => {
     const mon = (months[month - 1]);
     if (typeof mon === 'undefined') {
       throw new Error('Invalid month number, number should be between 1 and 12');
@@ -49,27 +47,19 @@ const Adapter = function Adapter() {
     return short ? mon.short : mon.name;
   };
 
-  const getMonthLength = function getMonthLength(year, month) {
-    return jalaaliJs.jalaaliMonthLength(year, month);
-  };
+  const getMonthLength = (year, month) => jalaaliJs.jalaaliMonthLength(year, month);
 
-  const isValid = function isValid(date) {
-    return jalaaliJs.isValidJalaaliDate(date.year, date.month, date.day);
-  };
+  const isValid = date => jalaaliJs.isValidJalaaliDate(date.year, date.month, date.day);
 
-  const isLeap = function isLeap(year) {
-    return jalaaliJs.isLeapJalaaliYear(year);
-  };
+  const isLeap = year => jalaaliJs.isLeapJalaaliYear(year);
 
-  const offsetYear = function offsetYear(date, offset) {
-    return {
-      year: date.year + offset,
-      month: date.month,
-      day: date.day,
-    };
-  };
+  const offsetYear = (date, offset) => ({
+    year: date.year + offset,
+    month: date.month,
+    day: date.day,
+  });
 
-  const offsetMonth = function offsetMonth(date, offset) {
+  const offsetMonth = (date, offset) => {
     const newYear = date.year + Math.floor((offset + (date.month - 1)) / 12);
     const newOffset = offset % 12;
     const newMonth = ((12 + (date.month - 1) + newOffset) % 12) + 1;
@@ -81,13 +71,13 @@ const Adapter = function Adapter() {
     };
   };
 
-  const offsetDay = function offsetDay(date, offset) {
+  const offsetDay = (date, offset) => {
     /*
       im not sure if its 100% accurate
       should be checked
     */
     const i18nDate = i18n({ year: date.year, month: date.month, day: date.day });
-    const jsDate = new Date(i18nDate.year + '-' + i18nDate.month + '-' + i18nDate.day);
+    const jsDate = new Date(`${i18nDate.year}-${i18nDate.month}-${i18nDate.day}`);
     jsDate.setDate(jsDate.getDate() + offset);
     return l10n({
       year: jsDate.getFullYear(),
@@ -97,18 +87,18 @@ const Adapter = function Adapter() {
   };
 
   return {
-    id: id,
-    name: name,
-    description: description,
-    l10n: l10n,
-    i18n: i18n,
-    isValid: isValid,
-    isLeap: isLeap,
-    getMonthName: getMonthName,
-    getMonthLength: getMonthLength,
-    offsetYear: offsetYear,
-    offsetMonth: offsetMonth,
-    offsetDay: offsetDay,
+    id,
+    name,
+    description,
+    l10n,
+    i18n,
+    isValid,
+    isLeap,
+    getMonthName,
+    getMonthLength,
+    offsetYear,
+    offsetMonth,
+    offsetDay,
   };
 };
 
