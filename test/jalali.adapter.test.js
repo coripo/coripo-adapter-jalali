@@ -23,7 +23,7 @@ describe('Jalali Adapter', () => {
     });
   });
 
-  describe('l10n', () => {
+  describe('l10n()', () => {
     it('should return {year: 1396, month: 1, day: 31} when (2017, 4, 20)', () => {
       const date = { year: 2017, month: 4, day: 20 };
       expect(jalaliAdapter.l10n(date)).to.deep.equal({ year: 1396, month: 1, day: 31 });
@@ -34,7 +34,7 @@ describe('Jalali Adapter', () => {
     });
   });
 
-  describe('i18n', () => {
+  describe('i18n()', () => {
     it('should return {year: 2017, month: 4, day: 20} when (1396, 1, 31)', () => {
       const date = { year: 1396, month: 1, day: 31 };
       expect(jalaliAdapter.i18n(date)).to.deep.equal({ year: 2017, month: 4, day: 20 });
@@ -45,7 +45,7 @@ describe('Jalali Adapter', () => {
     });
   });
 
-  describe('isValid', () => {
+  describe('isValid()', () => {
     it('should return false when input is (1394, 12, 30)', () => {
       const date = { year: 1394, month: 12, day: 30 };
       expect(jalaliAdapter.isValid(date)).to.be.false;
@@ -56,7 +56,7 @@ describe('Jalali Adapter', () => {
     });
   });
 
-  describe('isLeap', () => {
+  describe('isLeap()', () => {
     it('should return false when input is 1394', () => {
       expect(jalaliAdapter.isLeap(1394)).to.be.false;
     });
@@ -68,7 +68,7 @@ describe('Jalali Adapter', () => {
     });
   });
 
-  describe('getMonthName', () => {
+  describe('getMonthName()', () => {
     it('should return string when number is between 1 and 12', () => {
       for (let i = 1; i <= 12; i += 1) {
         expect(jalaliAdapter.getMonthName(i)).to.be.a('string');
@@ -82,7 +82,7 @@ describe('Jalali Adapter', () => {
     });
   });
 
-  describe('getMonthLength', () => {
+  describe('getMonthLength()', () => {
     it('should return 31 when input is (1396, 1) to (1396, 6)', () => {
       for (let i = 1; i <= 6; i += 1) {
         expect(jalaliAdapter.getMonthLength(1396, i)).to.equal(31);
@@ -98,6 +98,44 @@ describe('Jalali Adapter', () => {
     });
     it('should return 30 when input is (1395, 12)', () => {
       expect(jalaliAdapter.getMonthLength(1395, 12)).to.equal(30);
+    });
+  });
+  describe('offsetYear()', () => {
+    it('should return 1400', () => {
+      expect(jalaliAdapter.offsetYear({ year: 1396, month: 11, day: 24 }, 4).year).to.equal(1400);
+    });
+    it('should return 1300', () => {
+      expect(jalaliAdapter.offsetYear({ year: 1396, month: 11, day: 24 }, -96).year).to.equal(1300);
+    });
+  });
+  describe('offsetMonth()', () => {
+    it('should return increasing month', () => {
+      for (let i = 1; i <= 11; i += 1) {
+        const date = jalaliAdapter.offsetMonth({ year: 1396, month: 1, day: 20 }, i);
+        expect(date.year).to.equal(1396);
+        expect(date.month).to.equal(1 + i);
+        expect(date.day).to.equal(20);
+      }
+    });
+    it('should return increasing month and not cross month day length', () => {
+      for (let i = 1; i <= 11; i += 1) {
+        const date = jalaliAdapter.offsetMonth({ year: 1396, month: 1, day: 40 }, i);
+        expect(date.year).to.equal(1396);
+        expect(date.month).to.equal(1 + i);
+        expect(date.day).to.equal(jalaliAdapter.getMonthLength(date.year, date.month));
+      }
+    });
+    it('should return 1395/12/29', () => {
+      const date = jalaliAdapter.offsetMonth({ year: 1396, month: 1, day: 31 }, -1);
+      expect(date.year).to.equal(1395);
+      expect(date.month).to.equal(12);
+      expect(date.day).to.equal(jalaliAdapter.getMonthLength(date.year, date.month));
+    });
+    it('should return 1394/11/29', () => {
+      const date = jalaliAdapter.offsetMonth({ year: 1396, month: 1, day: 31 }, -14);
+      expect(date.year).to.equal(1394);
+      expect(date.month).to.equal(11);
+      expect(date.day).to.equal(jalaliAdapter.getMonthLength(date.year, date.month));
     });
   });
 });

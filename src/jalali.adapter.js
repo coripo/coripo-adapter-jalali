@@ -60,24 +60,21 @@ const Adapter = function Adapter() {
   });
 
   const offsetMonth = (date, offset) => {
-    /*
-      this method is not 100% accurate enough.
-      developer should write a custom month traversing function for the adapter
-    */
-    const i18nDate = i18n({ year: date.year, month: date.month, day: date.day });
-    const jsDate = new Date(`${i18nDate.year}-${i18nDate.month}-${i18nDate.day}`);
-    jsDate.setMonth(jsDate.getMonth() + offset);
-    return l10n({
-      year: jsDate.getFullYear(),
-      month: jsDate.getMonth() + 1,
-      day: jsDate.getDate(),
-    });
+    const newYear = date.year + Math.floor((offset + (date.month - 1)) / 12);
+    const newOffset = offset % 12;
+    const newMonth = ((12 + (date.month - 1) + newOffset) % 12) + 1;
+    const newDay = Math.min(date.day, getMonthLength(newYear, newMonth));
+    return {
+      year: newYear,
+      month: newMonth,
+      day: newDay,
+    };
   };
 
   const offsetDay = (date, offset) => {
     /*
-      this method is not 100% accurate enough.
-      developer should write a custom day traversing function for the adapter
+      im not sure if its 100% accurate
+      should be checked
     */
     const i18nDate = i18n({ year: date.year, month: date.month, day: date.day });
     const jsDate = new Date(`${i18nDate.year}-${i18nDate.month}-${i18nDate.day}`);

@@ -1,6 +1,6 @@
 {
   "name": "coripo-adapter-jalali",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "Jalali calendar adapter for Coripo",
   "main": "index.js",
   "scripts": {
