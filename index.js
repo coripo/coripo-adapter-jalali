@@ -1,3 +1,3 @@
-const JalaliAdapter = require('./src/jalali.adapter.js').Adapter;
+const JalaliAdapter = require('./lib/jalali.adapter.js').Adapter;
 
 exports.Adapter = JalaliAdapter;
