@@ -20,7 +20,7 @@ const Adapter = function Adapter() {
     { name: 'Esfand', short: 'Esf' },
   ];
 
-  const l10n = (date) => {
+  const l10n = function l10n(date) {
     const newDate = jalaaliJs.toJalaali(date.year, date.month, date.day);
     const ldate = {
       year: newDate.jy,
@@ -29,7 +29,7 @@ const Adapter = function Adapter() {
     };
     return ldate;
   };
-  const i18n = (ldate) => {
+  const i18n = function i18n(ldate) {
     const newDate = jalaaliJs.toGregorian(ldate.year, ldate.month, ldate.day);
     const date = {
       year: newDate.gy,
@@ -39,7 +39,7 @@ const Adapter = function Adapter() {
     return date;
   };
 
-  const getMonthName = (month, short) => {
+  const getMonthName = function getMonthName(month, short) {
     const mon = (months[month - 1]);
     if (typeof mon === 'undefined') {
       throw new Error('Invalid month number, number should be between 1 and 12');
@@ -47,19 +47,27 @@ const Adapter = function Adapter() {
     return short ? mon.short : mon.name;
   };
 
-  const getMonthLength = (year, month) => jalaaliJs.jalaaliMonthLength(year, month);
+  const getMonthLength = function getMonthLength(year, month) {
+    return jalaaliJs.jalaaliMonthLength(year, month);
+  };
 
-  const isValid = date => jalaaliJs.isValidJalaaliDate(date.year, date.month, date.day);
+  const isValid = function isValid(date) {
+    return jalaaliJs.isValidJalaaliDate(date.year, date.month, date.day);
+  };
 
-  const isLeap = year => jalaaliJs.isLeapJalaaliYear(year);
+  const isLeap = function isLeap(year) {
+    return jalaaliJs.isLeapJalaaliYear(year);
+  };
 
-  const offsetYear = (date, offset) => ({
-    year: date.year + offset,
-    month: date.month,
-    day: date.day,
-  });
+  const offsetYear = function offsetYear(date, offset) {
+    return {
+      year: date.year + offset,
+      month: date.month,
+      day: date.day,
+    };
+  };
 
-  const offsetMonth = (date, offset) => {
+  const offsetMonth = function offsetMonth(date, offset) {
     const newYear = date.year + Math.floor((offset + (date.month - 1)) / 12);
     const newOffset = offset % 12;
     const newMonth = ((12 + (date.month - 1) + newOffset) % 12) + 1;
@@ -71,7 +79,7 @@ const Adapter = function Adapter() {
     };
   };
 
-  const offsetDay = (date, offset) => {
+  const offsetDay = function offsetDay(date, offset) {
     /*
       im not sure if its 100% accurate
       should be checked
