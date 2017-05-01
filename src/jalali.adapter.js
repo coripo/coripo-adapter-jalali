@@ -4,7 +4,7 @@ const locales = require('../locales/index.js');
 
 const Adapter = function Adapter(config = {}) {
   i18next.init({
-    lng: config.locale || 'fa',
+    lng: config.locale || 'en',
     fallbackLng: 'en',
     initImmediate: false,
     resources: locales,
