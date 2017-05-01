@@ -9,10 +9,13 @@ const Adapter = function Adapter(config = {}) {
     initImmediate: false,
     resources: locales,
   });
-
+  const trl = (key) => {
+    i18next.store.data = locales;
+    return i18next.t(key);
+  };
   const id = 'coripo.coripo.adapter.jalali';
-  const name = i18next.t('app.name');
-  const description = i18next.t('app.description');
+  const name = trl('jalali-adapter.name');
+  const description = trl('jalali-adapter.description');
 
   const l10n = (date) => {
     const newDate = jalaaliJs.toJalaali(date.year, date.month, date.day);
@@ -34,9 +37,9 @@ const Adapter = function Adapter(config = {}) {
   };
 
   const getMonthName = (month, short) => {
-    const shortNameKey = `app.months.${month}.short`;
-    const fullNameKey = `app.months.${month}.name`;
-    const string = short ? i18next.t(shortNameKey) : i18next.t(fullNameKey);
+    const shortNameKey = `jalali-adapter.months.${month}.short`;
+    const fullNameKey = `jalali-adapter.months.${month}.name`;
+    const string = short ? trl(shortNameKey) : trl(fullNameKey);
     if (string === shortNameKey || string === fullNameKey) {
       throw new Error('Invalid month number, number should be between 1 and 12');
     }
