@@ -1,0 +1,58 @@
+{
+  "translation": {
+    "app": {
+      "name": "Jalali",
+      "description": "The Jalali calendar is a solar calendar that was used in Persia, variants of which today are still in use in Iran as well as Afghanistan.",
+      "months": {
+        "1": {
+          "name": "Farvardin",
+          "short": "Farv"
+        },
+        "2": {
+          "name": "Ordibehesht",
+          "short": "Ord"
+        },
+        "3": {
+          "name": "Khordad",
+          "short": "Kho"
+        },
+        "4": {
+          "name": "Tir",
+          "short": "Tir"
+        },
+        "5": {
+          "name": "Mordad",
+          "short": "Mor"
+        },
+        "6": {
+          "name": "Shahrivar",
+          "short": "Sha"
+        },
+        "7": {
+          "name": "Mehr",
+          "short": "Mehr"
+        },
+        "8": {
+          "name": "Aban",
+          "short": "Aban"
+        },
+        "9": {
+          "name": "Azar",
+          "short": "Azar"
+        },
+        "10": {
+          "name": "Dey",
+          "short": "Dey"
+        },
+        "11": {
+          "name": "Bahman",
+          "short": "Bah"
+        },
+        "12": {
+          "name": "Esfand",
+          "short": "Esf"
+        }
+      }
+    }
+  }
+}
