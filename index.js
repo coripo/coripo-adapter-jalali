@@ -1,1 +1,1 @@
-exports.Adapter = require('./lib/jalali.adapter.js').Adapter;
+module.exports = require('./lib/jalali.adapter.js');

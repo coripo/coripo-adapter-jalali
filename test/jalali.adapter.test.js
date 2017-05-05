@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-expressions */
 const expect = require('chai').expect;
-const JalaliAdapter = require('../src/jalali.adapter.js').Adapter;
+const JalaliAdapter = require('../src/jalali.adapter.js');
 
 const jalaliAdapter = new JalaliAdapter();
 
